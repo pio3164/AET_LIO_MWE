@@ -76,6 +76,12 @@ mkdir -p src/AET-LIO/include
 mkdir -p data
 ```
 
+Add the livox_ros_driver environment:
+
+```bash
+source ws_livox/devel/setup.bash
+```
+
 Build the ROS workspace:
 
 ```bash
