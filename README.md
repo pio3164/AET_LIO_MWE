@@ -1,54 +1,156 @@
 # AET_LIO_MWE
-DEMO
-# Environment
-* **ROS**: Noetic
-* **Ceres Solver**: 1.14.0
-* **PCL (Point Cloud Library)**: 1.10.0
-* **GTSAM**: 4.1.1
-* **Python**: 3.8.10
-* **Livox ROS Driver & SDK**:
-  * [Livox-SDK](https://github.com/Livox-SDK/Livox-SDK)
-  * [livox_ros_driver](https://github.com/Livox-SDK/livox_ros_driver)
+
+A minimal working example for running AET-LIO with ROS Noetic.
+
+This repository provides the configuration, sample data path convention, trajectory saving script, and evaluation tools for testing the LIO pipeline.
 
 ---
 
-# Configuration & Data Paths
-* **Parameter Configuration**: The configuration file `lslidar.yaml` is located at:
-  `AET_LIO_MWE/src/AET-LIO/config/`
-* **RTK Ground Truth**: The RTK trajectory data `rtk_data.csv` is located at:
-  `AET_LIO_MWE/rtk/`
+## Environment
+
+The project was tested with the following environment:
+
+| Dependency | Version |
+| --- | --- |
+| ROS | Noetic |
+| Ceres Solver | 1.14.0 |
+| PCL | 1.10.0 |
+| GTSAM | 4.1.1 |
+| Python | 3.8.10 |
+
+Additional dependencies:
+
+- [Livox-SDK](https://github.com/Livox-SDK/Livox-SDK)
+- [livox_ros_driver](https://github.com/Livox-SDK/livox_ros_driver)
 
 ---
 
-# Installation and Running
+## Configuration and Data Paths
 
-### 1. Build and Launch the LIO Node
-Please download the package. Next, create an “include” directory within the “AET_LIO_MWE/src/AET-LIO/” path and a “data” directory under the “AET_LIO_MWE/” root directory to store ROS bag files. Finally, open a terminal and execute the following command:
+- Parameter configuration file:
+
+```text
+AET_LIO_MWE/src/AET-LIO/config/lslidar.yaml
+```
+
+- RTK ground-truth trajectory file:
+
+```text
+AET_LIO_MWE/rtk/rtk_data.csv
+```
+
+- Recommended rosbag directory:
+
+```text
+AET_LIO_MWE/data/
+```
+
+---
+
+## Installation and Running
+
+### 1. Build the Workspace
+
+Clone or download this repository, then create the required directories:
+
 ```bash
 cd AET_LIO_MWE
+mkdir -p src/AET-LIO/include
+mkdir -p data
+```
+
+Build the ROS workspace:
+
+```bash
 catkin_make
 source devel/setup.bash
-roslaunch aet_lio mapping_lslidar.launch
+```
+
+---
+
+### 2. Download the Sample Dataset
+
+Download the sample rosbag from:
+
+[Google Drive Sample Bag](https://drive.google.com/file/d/1_JyrWb9awo0ONVJPZBl7bzVyxb0ugbp9/view?usp=sharing)
+
+Place the downloaded rosbag in:
+
+```text
+AET_LIO_MWE/data/
+```
+
+For example, the final file path should be:
+
+```text
+AET_LIO_MWE/data/sample.bag
+```
+
+If the downloaded file has a different name, either rename it to `sample.bag` or modify the `rosbag play` command accordingly.
+
+---
+
+### 3. Launch the LIO Node
+
+Open a terminal and run:
+
 ```bash
+cd AET_LIO_MWE
+source devel/setup.bash
+roslaunch aet_lio mapping_lslidar.launch
+```
 
-### 2. Download Sample Dataset
-Please download the sample rosbag from [https://drive.google.com/file/d/1_JyrWb9awo0ONVJPZBl7bzVyxb0ugbp9/view?usp=sharing] and place it in the `AET_LIO_MWE/sample_bag` directory.
+---
 
-### 3. Save the LIO Trajectory
-Open a new terminal to record the trajectory:
+### 4. Save the LIO Trajectory
+
+Open a new terminal and run:
+
 ```bash
 cd AET_LIO_MWE/rtk
-# Saves the LIO trajectory as 'odometry_trajectory.txt' in the current directory
 python3 save_path.py
+```
 
-### 4. Play the Rosbag
-Open another terminal to play the sample bag:
+This script saves the LIO trajectory as:
+
+```text
+AET_LIO_MWE/rtk/odometry_trajectory.txt
+```
+
+---
+
+### 5. Play the Rosbag
+
+Open another terminal and run:
+
+```bash
 cd AET_LIO_MWE/data
 rosbag play sample.bag
+```
 
-### 5. Evaluation (After the bag finishes)
-Once the bag playback is complete, open a new terminal to calculate errors and plot the trajectory:
+Wait until the rosbag playback finishes.
+
+---
+
+### 6. Evaluate the Trajectory
+
+After the rosbag finishes playing, run:
+
+```bash
 cd AET_LIO_MWE/rtk
-# Calculates error metrics and generates the trajectory comparison plot
 python3 compare_gps_lio.py
+```
 
+This script calculates error metrics and generates the trajectory comparison plot between the RTK ground truth and the LIO result.
+
+---
+
+## Notes
+
+- Make sure `rtk_data.csv` exists before running the evaluation script.
+- Make sure `save_path.py` is running while the rosbag is being played.
+- If you open a new terminal for ROS-related commands, remember to source the workspace:
+
+```bash
+source AET_LIO_MWE/devel/setup.bash
+```
