@@ -23,6 +23,8 @@ DEMO
 # Installation and Running
 
 ### 1. Build and Launch the LIO Node
+Download the package. 
+Create an "include" folder in the "AET_LIO_MWE/src/AET-LIO/" directory, and create a "data" folder in the "AET_LIO_MWE/" directory for storing ROSbag files.
 Open a terminal and run:
 ```bash
 cd AET_LIO_MWE
@@ -41,7 +43,7 @@ python3 save_path.py
 
 ### 4. Play the Rosbag
 Open another terminal to play the sample bag:
-cd AET_LIO_MWE/sample_bag
+cd AET_LIO_MWE/data
 rosbag play sample.bag
 
 ### 5. Evaluation (After the bag finishes)
