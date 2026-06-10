@@ -23,11 +23,7 @@ DEMO
 # Installation and Running
 
 ### 1. Build and Launch the LIO Node
-Download the package. 
-```bash
-Create an "include" folder in the "AET_LIO_MWE/src/AET-LIO/" directory, and create a "data" folder in the "AET_LIO_MWE/" directory for storing ROSbag files.
-```bash
-Open a terminal and run:
+Please download the package. Next, create an “include” directory within the “AET_LIO_MWE/src/AET-LIO/” path and a “data” directory under the “AET_LIO_MWE/” root directory to store ROS bag files. Finally, open a terminal and execute the following command:
 ```bash
 cd AET_LIO_MWE
 catkin_make
