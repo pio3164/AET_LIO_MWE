@@ -1,0 +1,46 @@
+common:
+    lid_topic:  "/lslidar_point_cloud"
+    imu_topic:  "/imu/data"
+    time_sync_en: false         # ONLY turn on when external time synchronization is really not possible
+    
+preprocess:
+    lidar_type: 4                # 4 for leishen LiDAR 
+    scan_line: 64
+    blind: 1
+
+mapping:
+    acc_cov: 0.1
+    gyr_cov: 0.1
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+    fov_degree:    120
+    det_range:     100.0
+    extrinsic_T: [0, 0.02, -0.05]
+    extrinsic_R: [ 0.99254615, 0.12186934, 0, 
+                   -0.12186934, 0.99254615, 0, 
+                   0, 0, 1]
+
+adaptive_motion:
+
+    gamma_acc: 1.0        # AET parameters Eq. (7)  M_a
+    zeta_vel: 0.1         # AET parameters Eq. (7)
+
+    alpha_gyr: 0.1        # AET parameters Eq. (7)  M_omega
+    beta_ang_acc: 0.9     # AET parameters Eq. (7)
+
+    d0_acc: 9.85          # AET parameters Eq. (8)  d0_a
+    d0_gyr: 3.45          # AET parameters Eq. (8)  d0_omega
+
+    delta_h: 0.03         # water surface tolerance threshold Eq. (11) delta
+
+    
+
+
+publish:     
+    scan_publish_en:  true       # 'false' will close all the point cloud output
+    dense_publish_en: ture       # false will low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: true  # output the point cloud scans in IMU-body-frame
+pcd_save:
+  pcd_save_en: false
+  interval: -1                 # how many LiDAR frames saved in each pcd file;
+  # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.
