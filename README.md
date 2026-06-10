@@ -5,6 +5,7 @@ DEMO
 * **Ceres Solver**: 1.14.0
 * **PCL (Point Cloud Library)**: 1.10.0
 * **GTSAM**: 4.1.1
+* **Python**: 3.8.10
 * **Livox ROS Driver & SDK**:
   * [Livox-SDK](https://github.com/Livox-SDK/Livox-SDK)
   * [livox_ros_driver](https://github.com/Livox-SDK/livox_ros_driver)
