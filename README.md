@@ -51,8 +51,8 @@ AET_LIO_MWE/data/
 AET_LIO_MWE/
 ├── src/
 │   └── AET-LIO/             # This repository (core package)
-│       ├── config/          # Parameter configurations (e.g., lslidar.yaml)
-│       ├── include/         # (Please create this folder to place pre-compiled .so libraries)
+│       ├── config/          # Parameter configurations (lslidar.yaml)
+│       ├── include/         # (Please create this folder)
 │       └── ...
 ├── data/                    # (Please create this folder to store the downloaded rosbag)
 │   └── sample.bag
