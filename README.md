@@ -24,7 +24,9 @@ DEMO
 
 ### 1. Build and Launch the LIO Node
 Download the package. 
+```bash
 Create an "include" folder in the "AET_LIO_MWE/src/AET-LIO/" directory, and create a "data" folder in the "AET_LIO_MWE/" directory for storing ROSbag files.
+```bash
 Open a terminal and run:
 ```bash
 cd AET_LIO_MWE
