@@ -60,6 +60,7 @@ AET_LIO_MWE/
     ├── rtk_data.csv         # Reference RTK trajectory
     ├── save_path.py         # Script to record LIO trajectory
     └── compare_gps_lio.py   # Script to evaluate and plot results
+```
 
 ---
 
