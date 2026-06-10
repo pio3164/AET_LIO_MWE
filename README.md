@@ -29,12 +29,14 @@ cd AET_LIO_MWE
 catkin_make
 source devel/setup.bash
 roslaunch aet_lio mapping_lslidar.launch
+```bash
 
 ### 2. Download Sample Dataset
 Please download the sample rosbag from [https://drive.google.com/file/d/1_JyrWb9awo0ONVJPZBl7bzVyxb0ugbp9/view?usp=sharing] and place it in the `AET_LIO_MWE/sample_bag` directory.
 
 ### 3. Save the LIO Trajectory
 Open a new terminal to record the trajectory:
+```bash
 cd AET_LIO_MWE/rtk
 # Saves the LIO trajectory as 'odometry_trajectory.txt' in the current directory
 python3 save_path.py
