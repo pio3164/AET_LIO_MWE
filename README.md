@@ -45,6 +45,22 @@ AET_LIO_MWE/rtk/rtk_data.csv
 AET_LIO_MWE/data/
 ```
 
+- Workspace Directory Structure
+
+```text
+AET_LIO_MWE/
+├── src/
+│   └── AET-LIO/             # This repository (core package)
+│       ├── config/          # Parameter configurations (e.g., lslidar.yaml)
+│       ├── include/         # (Please create this folder to place pre-compiled .so libraries)
+│       └── ...
+├── data/                    # (Please create this folder to store the downloaded rosbag)
+│   └── sample.bag
+└── rtk/
+    ├── rtk_data.csv         # Reference RTK trajectory
+    ├── save_path.py         # Script to record LIO trajectory
+    └── compare_gps_lio.py   # Script to evaluate and plot results
+
 ---
 
 ## Installation and Running
