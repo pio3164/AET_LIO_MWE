@@ -120,7 +120,7 @@ Open a terminal and run:
 ```bash
 cd AET_LIO_MWE
 source devel/setup.bash
-roslaunch aet_lio mapping_lslidar.launch
+/usr/bin/time -v roslaunch aet_lio mapping_lslidar.launch
 ```
 
 ---
